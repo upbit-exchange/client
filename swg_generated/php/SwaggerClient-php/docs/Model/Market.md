@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **ask** | [**\Swagger\Client\Model\Ask**](Ask.md) |  | [optional] 
 **max_total** | **string** | 최대 매도/매수 금액 | [optional] 
 **state** | **string** | 마켓 운영 상태 | [optional] 
-**bid_account** | [**\Swagger\Client\Model\BidAccount**](BidAccount.md) |  | [optional] 
-**ask_account** | [**\Swagger\Client\Model\AskAccount**](AskAccount.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

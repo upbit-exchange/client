@@ -11,7 +11,5 @@ Name | Type | Description | Notes
 **ask** | [**Ask**](Ask.md) |  | [optional] 
 **maxTotal** | **String** | 최대 매도/매수 금액 | [optional] 
 **state** | **String** | 마켓 운영 상태 | [optional] 
-**bidAccount** | [**BidAccount**](BidAccount.md) |  | [optional] 
-**askAccount** | [**AskAccount**](AskAccount.md) |  | [optional] 
 
 

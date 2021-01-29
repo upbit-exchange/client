@@ -12,8 +12,6 @@ Name | Type | Description | Notes
 **ask** | [**Ask**](Ask.md) |  |  [optional]
 **max_total** | **kotlin.String** | 최대 매도/매수 금액 |  [optional]
 **state** | **kotlin.String** | 마켓 운영 상태 |  [optional]
-**bid_account** | [**BidAccount**](BidAccount.md) |  |  [optional]
-**ask_account** | [**AskAccount**](AskAccount.md) |  |  [optional]
 
 
 

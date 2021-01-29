@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **Ask** | [***Ask**](Ask.md) |  | [optional] [default to null]
 **MaxTotal** | **string** | 최대 매도/매수 금액 | [optional] [default to null]
 **State** | **string** | 마켓 운영 상태 | [optional] [default to null]
-**BidAccount** | [***BidAccount**](BidAccount.md) |  | [optional] [default to null]
-**AskAccount** | [***AskAccount**](AskAccount.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
