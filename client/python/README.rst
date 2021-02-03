@@ -43,7 +43,8 @@ REST Client
     secret_key = "Your Secret Key"
 
     client = Upbit(access_key, secret_key)
-    print(client.APIKey.APIKey_info()['result'])
+    api_keys = client.APIKey.APIKey_info()
+    print(api_keys['result'])
 
 
 - Buy Currency
@@ -96,28 +97,33 @@ WebSocket Client
 
 .. code:: python
 
+    # Using WebSocket
+
     import json
     import asyncio
 
     from upbit.websocket import UpbitWebSocket
 
 
-    async def trade(sock, payload):
+    # Definition async function
+    async def ticker(sock, payload):
         async with sock as conn:
-            await conn.send(payload)
-            data = await conn.recv()
-            resp = json.loads(data.decode('utf8'))
-            print(resp['result'])
+            while True:
+                await conn.send(payload)
+                recv = await conn.recv()
+                data = recv.decode('utf8')
+                result = json.loads(data)
+                print(result)
 
 
     sock = UpbitWebSocket()
 
     currencies = ["KRW-BTC", "KRW-ETH"]
     payload = sock.generate_payload(
-        type="trade", codes=currencies)
+        type="ticker", codes=currencies)
 
     event_loop = asyncio.get_event_loop()
-    event_loop.run_until_complete(trade(sock, payload))
+    event_loop.run_until_complete(ticker(sock, payload))
 
 Donation
 *********

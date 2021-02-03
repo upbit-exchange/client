@@ -47,7 +47,7 @@ Upbit(업비트) Cryptocurrency Exchange Open API Client of Multi-Programming La
 - [Python](https://github.com/uJhin/upbit-client/tree/main/swg_generated/python/)
 - [C++](https://github.com/uJhin/upbit-client/tree/main/swg_generated/cpp)
 - [CSharp](https://github.com/uJhin/upbit-client/tree/main/swg_generated/csharp/)
-- [Object-C](https://github.com/uJhin/upbit-client/tree/main/swg_generated/object-c)
+- [Objective-C](https://github.com/uJhin/upbit-client/tree/main/swg_generated/objective-c)
 - [Java](https://github.com/uJhin/upbit-client/tree/main/swg_generated/java/)
 - [JavaScript](https://github.com/uJhin/upbit-client/tree/main/swg_generated/)
 - [PHP](https://github.com/uJhin/upbit-client/tree/main/swg_generated/php/SwaggerClient-php/)
@@ -82,7 +82,8 @@ access_key = "Your Access Key"
 secret_key = "Your Secret Key"
 
 client = Upbit(access_key, secret_key)
-print(client.APIKey.APIKey_info()['result'])
+api_keys = client.APIKey.APIKey_info()
+print(api_keys['result'])
 ```
 
 - Buy Currency
@@ -129,6 +130,8 @@ print(order['result'])
 #### WebSocket Client
 - Get Real-Time Ticker
 ```python
+# Using WebSocket
+
 import json
 import asyncio
 
@@ -138,10 +141,12 @@ from upbit.websocket import UpbitWebSocket
 # Definition async function
 async def ticker(sock, payload):
     async with sock as conn:
-        await conn.send(payload)
-        data = await conn.recv()
-        result = json.loads(data.decode('utf8'))
-        print(result)
+        while True:
+            await conn.send(payload)
+            recv = await conn.recv()
+            data = recv.decode('utf8')
+            result = json.loads(data)
+            print(result)
 
 
 sock = UpbitWebSocket()
