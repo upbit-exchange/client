@@ -19,8 +19,11 @@ class HTTPFutureExtractor:
         remaining = headers['Remaining-Req']
         return {
             k: v
-            for k, v in
-            [param.split('=') for param in remaining.split('; ')]
+            for k, v in [
+                param.split('=')
+                for param
+                in remaining.split('; ')
+            ]
         }
 
     @staticmethod
@@ -86,5 +89,5 @@ class Validator:
         elif price > 2_000_000:
             unit = 1000
         else:
-            raise ValueError('Invaild Price')
+            raise ValueError('Invalid Price')
         return price - (price % unit)
