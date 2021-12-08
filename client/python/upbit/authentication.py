@@ -8,8 +8,8 @@ from urllib.parse import urlencode
 from bravado.requests_client import Authenticator
 
 
-QUOTATION_PARAMS = ['uuids', 'txids', 'identifiers']
 MAPPER           = 'swg_mapper.json'
+QUERY_PARAMS     = ['uuids', 'txids', 'identifiers', 'states']
 
 
 class APIKeyAuthenticator(Authenticator):
@@ -68,15 +68,15 @@ class APIKeyAuthenticator(Authenticator):
         query = urlencode({
             k: v
             for k, v in params.items()
-            if k not in QUOTATION_PARAMS
+            if k not in QUERY_PARAMS
         })
-        for quotation in QUOTATION_PARAMS:
-            if params.get(quotation):
-                param = params.pop(quotation)
-                params[f"{quotation}[]"] = param
+        for query_param in QUERY_PARAMS:
+            if params.get(query_param):
+                param = params.pop(query_param)
+                params[f"{query_param}[]"] = param
                 query_params = '&'.join([
-                    f"{quotation}[]={q}"
-                    for q in quotation
+                    f"{query_param}[]={q}"
+                    for q in param
                 ])
                 query = f"{query}&{query_params}" if query else query_params
         return query
